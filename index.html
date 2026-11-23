@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jeda — Keseimbangan Digital & Kesehatan Mental</title>
+<meta name="description" content="Jeda membantu kamu mengelola stres, menjaga fokus, dan merawat kesehatan mental di tengah derasnya teknologi. Selaras dengan SDG 3: Kehidupan Sehat dan Sejahtera.">
+<meta name="theme-color" content="#F2EDE3">
+<meta property="og:title" content="Jeda — Keseimbangan Digital & Kesehatan Mental">
+<meta property="og:description" content="Cek keseimbangan digital, latihan napas, sesi fokus, dan check-in mood. Data tersimpan di perangkatmu.">
+<meta property="og:type" content="website">
+<script>(function(){var d=document.documentElement;try{var m=localStorage.getItem('jeda:theme');m=(m==='light'||m==='dark')?m:'system';var dk=m==='dark'||(m==='system'&&window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches);d.dataset.theme=dk?'dark':'light';d.dataset.mode=m}catch(e){d.dataset.theme='light'}d.classList.add('js')})()</script>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#utama">Lewati ke konten</a>
+
+<!-- Filter distorsi untuk efek liquid glass (aktif di browser Chromium) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="liquid" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="2" seed="7" result="n"/>
+      <feGaussianBlur in="n" stdDeviation="2" result="b"/>
+      <feDisplacementMap in="SourceGraphic" in2="b" scale="22" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <symbol id="i-arrow" viewBox="0 0 20 20"><path d="M4 10h11m-4-4 4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-wind" viewBox="0 0 24 24"><path d="M3 9h10a3 3 0 1 0-3-3M3 15h14a3 3 0 1 1-3 3M3 12h7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-timer" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 9v4l2.5 2M9.5 2.5h5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 15-14 0 9-4 15-12 15-1.2 0-2-.4-3-1Zm0 0c2-4 5-7 9-9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M3 12h4l2-6 4 12 2-6h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 18.5h2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    <symbol id="i-auto" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="12.5" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 20.5h7M12 17v3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  </defs>
+</svg>
+
+<header class="nav-wrap">
+  <nav class="nav" aria-label="Navigasi utama">
+    <a class="brand" href="#atas" aria-label="Jeda, kembali ke atas">
+      <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-dasharray="52 17" stroke-linecap="round" transform="rotate(-70 16 16)"/><circle cx="16" cy="16" r="3.2" fill="var(--clay)"/></svg>
+      <span>Jeda</span>
+    </a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Buka menu">
+      <span></span><span></span>
+    </button>
+    <ul class="menu" id="menu">
+      <li><a href="#masalah">Masalah</a></li>
+      <li><a href="#alat">Alat</a></li>
+      <li><a href="#dampak">Dampak</a></li>
+      <li><a href="#sdg">SDG 3</a></li>
+      <li><a href="#bantuan">Bantuan</a></li>
+      <li><a id="nav-login" href="signin.html">Masuk</a></li>
+      <li class="menu-cta"><a id="nav-cta" class="btn btn-primary btn-sm" href="signup.html"><span>Daftar</span></a></li>
+    </ul>
+    <div class="theme-wrap">
+      <button class="btn theme-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="theme-pop" aria-label="Pengaturan tema">
+        <svg class="ic ic-sun" aria-hidden="true"><use href="#i-sun"/></svg><svg class="ic ic-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+      </button>
+      <div class="theme-pop" id="theme-pop" role="group" aria-label="Tema tampilan">
+        <p class="pop-title">Tampilan</p>
+        <div class="seg theme-seg">
+          <button type="button" class="tab" data-mode="light" aria-pressed="false"><svg aria-hidden="true"><use href="#i-sun"/></svg><span>Terang</span></button>
+          <button type="button" class="tab" data-mode="dark" aria-pressed="false"><svg aria-hidden="true"><use href="#i-moon"/></svg><span>Gelap</span></button>
+          <button type="button" class="tab" data-mode="system" aria-pressed="false"><svg aria-hidden="true"><use href="#i-auto"/></svg><span>Otomatis</span></button>
+        </div>
+        <p class="pop-note" id="theme-note">Mengikuti pengaturan perangkat.</p>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main id="utama">
+
+<!-- HERO -->
+<section class="hero" id="atas">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Digital wellbeing · SDG 3</p>
+      <h1>Teknologi seharusnya memberi <em>ruang</em>, bukan menguras.</h1>
+      <p class="lead">Jeda adalah ruang kecil di web untuk mengelola stres, menjaga fokus kerja, dan merawat kesehatan mental, tanpa akun dan tanpa melacakmu. Semua catatan tinggal di perangkatmu sendiri.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#alat" data-open-tab="cek"><span>Cek keseimbangan digitalku</span><svg class="ic"><use href="#i-arrow"/></svg></a>
+        <a class="btn" href="#masalah"><span>Mengapa ini penting</span></a>
+      </div>
+      <p class="fine">Gratis. Sekitar 2 menit. Bukan alat diagnosis.</p>
+    </div>
+
+    <div class="hero-art" aria-hidden="true">
+      <svg class="orb" viewBox="0 0 400 400">
+        <defs>
+          <radialGradient id="g1" cx="40%" cy="35%"><stop offset="0" stop-color="#E8F0E6"/><stop offset="1" stop-color="#9DBBA8"/></radialGradient>
+        </defs>
+        <circle cx="200" cy="200" r="170" fill="none" stroke="var(--ink)" stroke-opacity=".12"/>
+        <circle cx="200" cy="200" r="132" fill="none" stroke="var(--ink)" stroke-opacity=".12" stroke-dasharray="2 7"/>
+        <circle class="core" cx="200" cy="200" r="92" fill="url(#g1)"/>
+        <path class="arc" d="M200 30a170 170 0 0 1 147 85" fill="none" stroke="var(--clay)" stroke-width="3" stroke-linecap="round"/>
+        <circle class="dot" cx="347" cy="115" r="6" fill="var(--clay)"/>
+      </svg>
+      <div class="float-card fc-1">
+        <span class="fc-label">Sesi fokus</span>
+        <strong class="fc-big">25:00</strong>
+        <span class="fc-sub">notifikasi dibisukan</span>
+      </div>
+      <div class="float-card fc-2">
+        <span class="fc-label">Napas 4–7–8</span>
+        <strong class="fc-mid">Hembuskan pelan</strong>
+        <span class="fc-sub">siklus 3 dari 6</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <ul class="facts">
+      <li><strong>1 dari 8</strong><span>orang di dunia hidup dengan gangguan mental.</span><cite>WHO, World Mental Health Today (2025)</cite></li>
+      <li><strong>US$1 triliun</strong><span>kerugian produktivitas global per tahun akibat depresi dan kecemasan.</span><cite>WHO, Mental health at work</cite></li>
+      <li><strong>Target 3.4</strong><span>mendorong promosi kesehatan mental dan kesejahteraan pada 2030.</span><cite>PBB, SDG 3</cite></li>
+    </ul>
+  </div>
+</section>
+
+<!-- MASALAH -->
+<section class="sec" id="masalah">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <p class="eyebrow">Masalah</p>
+      <h2>Kita terhubung sepanjang hari, tapi jarang benar-benar beristirahat.</h2>
+      <p class="sub">Teknologi mempercepat pekerjaan sekaligus mengaburkan batas antara kerja, belajar, dan istirahat. Tiga masalah ini paling sering muncul, dan masing-masing kami jawab dengan satu alat yang bisa dipakai hari ini.</p>
+    </header>
+
+    <div class="problems">
+      <article class="prob reveal">
+        <span class="num">01</span>
+        <svg class="pi"><use href="#i-wind"/></svg>
+        <h3>Stres dan kelelahan digital</h3>
+        <p>Notifikasi tanpa henti membuat tubuh terus siaga. Stres menumpuk tanpa sempat diturunkan.</p>
+        <dl>
+          <dt>Solusi</dt><dd>Latihan napas terpandu dengan pengukuran ketegangan sebelum dan sesudah.</dd>
+          <dt>Diukur dari</dt><dd>Rata-rata penurunan skor ketegangan per sesi.</dd>
+        </dl>
+        <a class="link" href="#alat" data-open-tab="napas">Coba latihan napas <svg class="ic"><use href="#i-arrow"/></svg></a>
+      </article>
+
+      <article class="prob reveal">
+        <span class="num">02</span>
+        <svg class="pi"><use href="#i-timer"/></svg>
+        <h3>Fokus terpecah, kerja tidak efisien</h3>
+        <p>Berpindah tab dan membuka ponsel setiap beberapa menit membuat pekerjaan sederhana terasa panjang.</p>
+        <dl>
+          <dt>Solusi</dt><dd>Timer fokus dengan pencatat distraksi, supaya pola gangguanmu terlihat.</dd>
+          <dt>Diukur dari</dt><dd>Menit fokus utuh dan rata-rata distraksi per sesi.</dd>
+        </dl>
+        <a class="link" href="#alat" data-open-tab="fokus">Mulai sesi fokus <svg class="ic"><use href="#i-arrow"/></svg></a>
+      </article>
+
+      <article class="prob reveal">
+        <span class="num">03</span>
+        <svg class="pi"><use href="#i-leaf"/></svg>
+        <h3>Kesehatan mental yang terabaikan</h3>
+        <p>Perasaan sering baru dibicarakan saat sudah berat. Tanpa catatan, pola dan pemicunya sulit dikenali.</p>
+        <dl>
+          <dt>Solusi</dt><dd>Cek diri berbasis kebiasaan digital dan check-in mood harian dengan pemicu.</dd>
+          <dt>Diukur dari</dt><dd>Konsistensi check-in dan tren mood tujuh hari.</dd>
+        </dl>
+        <a class="link" href="#alat" data-open-tab="mood">Catat mood hari ini <svg class="ic"><use href="#i-arrow"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ALAT -->
+<section class="sec sec-tint" id="alat">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <p class="eyebrow">Alat</p>
+      <h2>Empat alat kecil, satu kebiasaan sehat.</h2>
+      <p class="sub">Mulai dari mengenali kondisimu, lalu pilih alat yang paling sesuai. Tidak perlu mendaftar. Catatanmu disimpan di peramban ini.</p>
+    </header>
+
+    <div class="tabs seg reveal" role="tablist" aria-label="Alat Jeda">
+      <button class="tab" role="tab" id="tab-cek" aria-controls="panel-cek" aria-selected="true" data-tab="cek">Cek diri</button>
+      <button class="tab" role="tab" id="tab-napas" aria-controls="panel-napas" aria-selected="false" tabindex="-1" data-tab="napas">Napas</button>
+      <button class="tab" role="tab" id="tab-fokus" aria-controls="panel-fokus" aria-selected="false" tabindex="-1" data-tab="fokus">Fokus</button>
+      <button class="tab" role="tab" id="tab-mood" aria-controls="panel-mood" aria-selected="false" tabindex="-1" data-tab="mood">Mood</button>
+    </div>
+
+    <!-- CEK DIRI -->
+    <div class="panel glass-card" role="tabpanel" id="panel-cek" aria-labelledby="tab-cek" data-panel="cek">
+      <div id="quiz-flow">
+        <div class="quiz-top">
+          <p class="muted" id="quiz-progress" aria-live="polite">Pertanyaan 1 dari 8</p>
+          <div class="bar"><i id="quiz-bar"></i></div>
+        </div>
+        <p class="quiz-hint">Dalam dua minggu terakhir, seberapa sering kamu mengalami hal ini?</p>
+        <h3 class="quiz-q" id="quiz-q" tabindex="-1"></h3>
+        <div class="opts" id="quiz-opts"></div>
+        <div class="quiz-actions">
+          <button class="btn btn-sm" type="button" id="quiz-back"><span>Sebelumnya</span></button>
+        </div>
+      </div>
+      <div id="quiz-result" hidden></div>
+    </div>
+
+    <!-- NAPAS -->
+    <div class="panel glass-card" role="tabpanel" id="panel-napas" aria-labelledby="tab-napas" data-panel="napas" hidden>
+      <div class="two">
+        <div class="controls">
+          <h3>Latihan napas terpandu</h3>
+          <p class="muted">Napas lambat membantu tubuh keluar dari mode siaga. Pilih pola dan durasi, lalu ikuti lingkaran.</p>
+
+          <fieldset class="chips" id="breath-mode">
+            <legend>Pola napas</legend>
+            <button type="button" class="chip on" data-mode="box" aria-pressed="true">Kotak 4–4–4–4</button>
+            <button type="button" class="chip" data-mode="478" aria-pressed="false">4–7–8</button>
+            <button type="button" class="chip" data-mode="calm" aria-pressed="false">Pelan 5–5</button>
+          </fieldset>
+
+          <fieldset class="chips" id="breath-dur">
+            <legend>Durasi</legend>
+            <button type="button" class="chip" data-min="1" aria-pressed="false">1 menit</button>
+            <button type="button" class="chip on" data-min="3" aria-pressed="true">3 menit</button>
+            <button type="button" class="chip" data-min="5" aria-pressed="false">5 menit</button>
+          </fieldset>
+
+          <fieldset class="chips" id="breath-before">
+            <legend>Seberapa tegang kamu sekarang? <span class="muted">(opsional)</span></legend>
+            <button type="button" class="chip scale" data-v="1" aria-pressed="false">1</button>
+            <button type="button" class="chip scale" data-v="2" aria-pressed="false">2</button>
+            <button type="button" class="chip scale" data-v="3" aria-pressed="false">3</button>
+            <button type="button" class="chip scale" data-v="4" aria-pressed="false">4</button>
+            <button type="button" class="chip scale" data-v="5" aria-pressed="false">5</button>
+            <p class="scale-note"><span>Santai</span><span>Sangat tegang</span></p>
+          </fieldset>
+
+          <div class="row">
+            <button class="btn btn-primary" type="button" id="breath-start"><span>Mulai</span></button>
+            <button class="btn" type="button" id="breath-stop" hidden><span>Berhenti</span></button>
+          </div>
+        </div>
+
+        <div class="stage" aria-live="polite">
+          <div class="breath" id="breath-circle"><div class="breath-in"></div></div>
+          <p class="stage-phase" id="breath-phase">Siap saat kamu siap</p>
+          <p class="stage-count" id="breath-count">&nbsp;</p>
+          <div class="after" id="breath-after" hidden>
+            <p>Selesai. Seberapa tegang kamu sekarang?</p>
+            <div class="chips inline" id="breath-after-chips">
+              <button type="button" class="chip scale" data-v="1">1</button>
+              <button type="button" class="chip scale" data-v="2">2</button>
+              <button type="button" class="chip scale" data-v="3">3</button>
+              <button type="button" class="chip scale" data-v="4">4</button>
+              <button type="button" class="chip scale" data-v="5">5</button>
+            </div>
+            <button type="button" class="link-btn" id="breath-skip">Lewati</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOKUS -->
+    <div class="panel glass-card" role="tabpanel" id="panel-fokus" aria-labelledby="tab-fokus" data-panel="fokus" hidden>
+      <div class="two">
+        <div class="controls">
+          <h3>Sesi fokus tanpa gangguan</h3>
+          <p class="muted">Tulis satu hal yang ingin selesai, jauhkan ponsel, lalu mulai. Tekan “Catat distraksi” setiap kali perhatianmu terpecah.</p>
+
+          <label class="field" for="focus-task">Fokus pada</label>
+          <input id="focus-task" type="text" maxlength="80" placeholder="mis. menulis bab pendahuluan">
+
+          <fieldset class="chips" id="focus-presets">
+            <legend>Durasi fokus</legend>
+            <button type="button" class="chip" data-min="15" aria-pressed="false">15 menit</button>
+            <button type="button" class="chip on" data-min="25" aria-pressed="true">25 menit</button>
+            <button type="button" class="chip" data-min="45" aria-pressed="false">45 menit</button>
+          </fieldset>
+
+          <div class="row">
+            <button class="btn btn-primary" type="button" id="focus-toggle"><span>Mulai</span></button>
+            <button class="btn" type="button" id="focus-reset"><span>Atur ulang</span></button>
+          </div>
+          <div class="row">
+            <button class="btn btn-sm" type="button" id="focus-distract"><span>Catat distraksi</span></button>
+            <p class="muted" id="focus-dcount">0 distraksi</p>
+          </div>
+        </div>
+
+        <div class="stage">
+          <div class="ring">
+            <svg viewBox="0 0 200 200" aria-hidden="true">
+              <circle cx="100" cy="100" r="88" class="ring-bg"/>
+              <circle cx="100" cy="100" r="88" class="ring-fg" id="focus-ring"/>
+            </svg>
+            <div class="ring-text">
+              <strong id="focus-time" role="timer" aria-live="off">25:00</strong>
+              <span id="focus-mode">Fokus</span>
+            </div>
+          </div>
+          <p class="stage-count" id="focus-note">Siap memulai</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOOD -->
+    <div class="panel glass-card" role="tabpanel" id="panel-mood" aria-labelledby="tab-mood" data-panel="mood" hidden>
+      <div class="two">
+        <form class="controls" id="mood-form">
+          <h3>Check-in mood</h3>
+          <p class="muted">Satu menit untuk jujur pada diri sendiri. Pola baru terlihat setelah beberapa hari.</p>
+
+          <fieldset class="chips moods" id="mood-scale">
+            <legend>Bagaimana perasaanmu hari ini?</legend>
+            <button type="button" class="chip" data-v="1" aria-pressed="false">Berat</button>
+            <button type="button" class="chip" data-v="2" aria-pressed="false">Kurang baik</button>
+            <button type="button" class="chip" data-v="3" aria-pressed="false">Biasa</button>
+            <button type="button" class="chip" data-v="4" aria-pressed="false">Baik</button>
+            <button type="button" class="chip" data-v="5" aria-pressed="false">Sangat baik</button>
+          </fieldset>
+
+          <fieldset class="chips" id="mood-tags">
+            <legend>Yang paling memengaruhi <span class="muted">(boleh lebih dari satu)</span></legend>
+            <button type="button" class="chip" data-tag="Pekerjaan/studi" aria-pressed="false">Pekerjaan/studi</button>
+            <button type="button" class="chip" data-tag="Tidur" aria-pressed="false">Tidur</button>
+            <button type="button" class="chip" data-tag="Layar & media sosial" aria-pressed="false">Layar &amp; media sosial</button>
+            <button type="button" class="chip" data-tag="Relasi" aria-pressed="false">Relasi</button>
+            <button type="button" class="chip" data-tag="Aktivitas fisik" aria-pressed="false">Aktivitas fisik</button>
+          </fieldset>
+
+          <label class="field" for="mood-note">Catatan singkat <span class="muted">(opsional)</span></label>
+          <textarea id="mood-note" rows="2" maxlength="160" placeholder="Apa yang sedang kamu rasakan?"></textarea>
+
+          <div class="row">
+            <button class="btn btn-primary" type="submit"><span>Simpan check-in</span></button>
+          </div>
+        </form>
+
+        <div class="stage stage-top">
+          <h4>Tujuh hari terakhir</h4>
+          <div id="mood-chart" class="chart" role="img" aria-label="Grafik mood tujuh hari terakhir"></div>
+          <ul class="log" id="mood-log"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DAMPAK -->
+<section class="sec" id="dampak">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <p class="eyebrow">Dampak</p>
+      <h2>Dampak yang bisa kamu lihat sendiri.</h2>
+      <p class="sub">Ringkasan ini dihitung langsung dari catatanmu di perangkat ini, jadi kamu tahu apakah kebiasaan baru benar-benar bekerja.</p>
+    </header>
+
+    <div class="metrics reveal" id="metrics">
+      <article class="metric">
+        <p class="m-label">Cek keseimbangan terakhir</p>
+        <p class="m-val" id="m-assess">–</p>
+        <p class="m-sub" id="m-assess-sub">Belum ada data</p>
+      </article>
+      <article class="metric">
+        <p class="m-label">Fokus utuh</p>
+        <p class="m-val" id="m-focus">–</p>
+        <p class="m-sub" id="m-focus-sub">Belum ada sesi</p>
+      </article>
+      <article class="metric">
+        <p class="m-label">Ketegangan setelah napas</p>
+        <p class="m-val" id="m-breath">–</p>
+        <p class="m-sub" id="m-breath-sub">Belum ada sesi</p>
+      </article>
+      <article class="metric">
+        <p class="m-label">Mood 7 hari</p>
+        <p class="m-val" id="m-mood">–</p>
+        <p class="m-sub" id="m-mood-sub">Belum ada check-in</p>
+      </article>
+    </div>
+    <p class="data-row reveal"><button class="link-btn" type="button" id="wipe">Hapus semua data saya</button></p>
+
+    <div class="chain reveal">
+      <h3>Dari aktivitas kecil ke dampak yang lebih luas</h3>
+      <ol>
+        <li><span>Aktivitas</span><p>Pengguna cek diri, berlatih napas, fokus, dan mencatat mood.</p></li>
+        <li><span>Hasil langsung</span><p>Kesadaran akan pola layar, ketegangan menurun, waktu fokus utuh bertambah.</p></li>
+        <li><span>Perubahan perilaku</span><p>Jeda rutin, batas layar sebelum tidur, kebiasaan mencari dukungan lebih awal.</p></li>
+        <li><span>Manfaat jangka panjang</span><p>Stres lebih terkelola, kerja lebih efisien, risiko masalah mental berlarut berkurang.</p></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- SDG -->
+<section class="sec sec-dark" id="sdg">
+  <div class="wrap sdg-grid">
+    <div class="reveal">
+      <p class="eyebrow">Kontribusi pada SDG 3</p>
+      <h2>Kehidupan sehat dan sejahtera dimulai dari kebiasaan sehari-hari.</h2>
+      <p class="sub">Tujuan 3 menegaskan bahwa kesehatan mencakup kesehatan mental. Jeda berfokus pada satu bagian yang bisa dijangkau lewat web: pencegahan dan literasi kesehatan mental.</p>
+    </div>
+    <div class="sdg-list reveal">
+      <div class="sdg-item">
+        <span class="tag">Target 3.4</span>
+        <p>Mempromosikan kesehatan mental dan kesejahteraan. Cek diri, latihan napas, dan check-in mood membantu pencegahan sejak dini.</p>
+      </div>
+      <div class="sdg-item">
+        <span class="tag">Akses &amp; kesetaraan</span>
+        <p>Gratis, ringan, berbahasa Indonesia, tanpa akun, dan dapat dipakai di ponsel dengan koneksi biasa.</p>
+      </div>
+      <div class="sdg-item">
+        <span class="tag">Privasi sebagai prinsip</span>
+        <p>Data kesehatan itu sensitif. Semua catatan disimpan di peramban penggunanya dan tidak dikirim ke server.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BANTUAN -->
+<section class="sec" id="bantuan">
+  <div class="wrap">
+    <div class="help glass-card reveal">
+      <div>
+        <p class="eyebrow">Bantuan</p>
+        <h2>Jeda bukan pengganti tenaga profesional.</h2>
+        <p>Jika beban terasa terlalu berat atau berlangsung berminggu-minggu, bicaralah dengan orang yang kamu percaya, psikolog, atau layanan kesehatan terdekat.</p>
+      </div>
+      <ul class="help-list">
+        <li><strong>Layanan kesehatan jiwa Kemenkes</strong><span>Telepon <a href="tel:119">119</a>, lalu tekan ekstensi 8.</span></li>
+        <li><strong>Keadaan darurat</strong><span>Segera hubungi layanan darurat setempat atau datang ke IGD terdekat.</span></li>
+        <li><strong>Kampus atau kantor</strong><span>Cari layanan konseling di institusimu. Banyak yang gratis.</span></li>
+      </ul>
+    </div>
+
+    <div class="faq reveal">
+      <h3>Pertanyaan umum</h3>
+      <details>
+        <summary>Apakah data saya dikirim ke server?</summary>
+        <p>Tidak. Hasil cek diri, sesi napas, sesi fokus, dan mood disimpan di penyimpanan lokal peramban kamu. Menghapus data situs atau menekan “Hapus semua data saya” akan menghilangkannya.</p>
+      </details>
+      <details>
+        <summary>Apakah hasil cek diri adalah diagnosis?</summary>
+        <p>Bukan. Cek diri hanya membaca kebiasaan digitalmu dan menyarankan langkah kecil. Untuk penilaian kesehatan mental, temui tenaga profesional.</p>
+      </details>
+      <details>
+        <summary>Mengapa pola napas dan timer fokus ini?</summary>
+        <p>Napas lambat dengan hembusan yang lebih panjang umum dipakai untuk menenangkan diri, dan teknik fokus berinterval membantu menjaga perhatian. Keduanya sederhana dan aman dicoba kebanyakan orang. Hentikan bila kamu merasa pusing.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <p class="brand-s">Jeda</p>
+    <p class="muted">Website by: Steven Paulus Siahaan</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="common.js" defer></script>
+<script src="app.js" defer></script>
+</body>
+</html>

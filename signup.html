@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daftar — Jeda</title>
+<meta name="description" content="Daftar ke Jeda untuk menyimpan catatan keseimbangan digital, napas, fokus, dan mood di perangkatmu.">
+<meta name="theme-color" content="#F2EDE3">
+<script>(function(){var d=document.documentElement;try{var m=localStorage.getItem('jeda:theme');m=(m==='light'||m==='dark')?m:'system';var dk=m==='dark'||(m==='system'&&window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches);d.dataset.theme=dk?'dark':'light';d.dataset.mode=m}catch(e){d.dataset.theme='light'}d.classList.add('js')})()</script>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="auth-page">
+<a class="skip" href="#utama">Lewati ke konten</a>
+
+<!-- Filter distorsi untuk efek liquid glass (aktif di browser Chromium) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="liquid" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="2" seed="7" result="n"/>
+      <feGaussianBlur in="n" stdDeviation="2" result="b"/>
+      <feDisplacementMap in="SourceGraphic" in2="b" scale="22" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <symbol id="i-arrow" viewBox="0 0 20 20"><path d="M4 10h11m-4-4 4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-wind" viewBox="0 0 24 24"><path d="M3 9h10a3 3 0 1 0-3-3M3 15h14a3 3 0 1 1-3 3M3 12h7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-timer" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 9v4l2.5 2M9.5 2.5h5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 15-14 0 9-4 15-12 15-1.2 0-2-.4-3-1Zm0 0c2-4 5-7 9-9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M3 12h4l2-6 4 12 2-6h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 18.5h2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    <symbol id="i-auto" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="12.5" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 20.5h7M12 17v3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  </defs>
+</svg>
+
+<header class="nav-wrap">
+  <nav class="nav" aria-label="Navigasi utama">
+    <a class="brand" href="index.html" aria-label="Jeda, kembali ke beranda">
+      <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-dasharray="52 17" stroke-linecap="round" transform="rotate(-70 16 16)"/><circle cx="16" cy="16" r="3.2" fill="var(--clay)"/></svg>
+      <span>Jeda</span>
+    </a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Buka menu">
+      <span></span><span></span>
+    </button>
+    <ul class="menu" id="menu">
+      <li><a href="index.html#masalah">Masalah</a></li>
+      <li><a href="index.html#alat">Alat</a></li>
+      <li><a href="index.html#dampak">Dampak</a></li>
+      <li><a href="index.html#sdg">SDG 3</a></li>
+      <li><a href="index.html#bantuan">Bantuan</a></li>
+      <li><a id="nav-login" href="signin.html">Masuk</a></li>
+      <li class="menu-cta"><a id="nav-cta" class="btn btn-primary btn-sm" href="signup.html" aria-current="page"><span>Daftar</span></a></li>
+    </ul>
+    <div class="theme-wrap">
+      <button class="btn theme-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="theme-pop" aria-label="Pengaturan tema">
+        <svg class="ic ic-sun" aria-hidden="true"><use href="#i-sun"/></svg><svg class="ic ic-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+      </button>
+      <div class="theme-pop" id="theme-pop" role="group" aria-label="Tema tampilan">
+        <p class="pop-title">Tampilan</p>
+        <div class="seg theme-seg">
+          <button type="button" class="tab" data-mode="light" aria-pressed="false"><svg aria-hidden="true"><use href="#i-sun"/></svg><span>Terang</span></button>
+          <button type="button" class="tab" data-mode="dark" aria-pressed="false"><svg aria-hidden="true"><use href="#i-moon"/></svg><span>Gelap</span></button>
+          <button type="button" class="tab" data-mode="system" aria-pressed="false"><svg aria-hidden="true"><use href="#i-auto"/></svg><span>Otomatis</span></button>
+        </div>
+        <p class="pop-note" id="theme-note">Mengikuti pengaturan perangkat.</p>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main id="utama" class="auth">
+  <div class="auth-grid">
+    <aside class="auth-side">
+      <p class="eyebrow">Digital wellbeing · SDG 3</p>
+      <h2 class="auth-h">Mulai kebiasaan digital yang lebih <em>tenang</em>.</h2>
+      <ul class="perks">
+        <li><svg class="pi"><use href="#i-leaf"/></svg><span>Riwayat cek diri, napas, fokus, dan mood tersimpan rapi.</span></li>
+        <li><svg class="pi"><use href="#i-pulse"/></svg><span>Lihat perubahan ketegangan dan mood dari waktu ke waktu.</span></li>
+        <li><svg class="pi"><use href="#i-phone"/></svg><span>Tanpa pelacakan. Datamu tinggal di perangkatmu.</span></li>
+      </ul>
+    </aside>
+
+    <section class="auth-card glass-card" aria-labelledby="auth-title-h">
+      <div class="seg auth-seg" role="group" aria-label="Pilih masuk atau daftar">
+          <a class="tab" href="signin.html">Masuk</a>
+          <a class="tab" href="signup.html" aria-current="page">Daftar</a>
+        </div>
+      <div class="auth-body">
+        <h1 class="auth-title" id="auth-title-h">Buat akun Jeda</h1>
+        <p class="muted">Gratis, tanpa kartu, dan tanpa pelacakan. Akunmu menyimpan catatan terpisah dari pengguna lain di perangkat ini.</p>
+        <p class="form-msg" id="form-msg" role="alert" hidden></p>
+        <button class="btn btn-google btn-block" type="button" id="google-btn" data-label="Daftar dengan Google"><svg viewBox="0 0 18 18" aria-hidden="true"><path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844a4.14 4.14 0 0 1-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615z"/><path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z"/><path fill="#FBBC05" d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z"/><path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z"/></svg><span>Daftar dengan Google</span></button>
+        <p class="g-note">Dengan melanjutkan, kamu mengerti bahwa Jeda bukan alat diagnosis dan datamu disimpan di perangkat ini.</p>
+        <p class="or" role="separator"><span>atau dengan email</span></p>
+        <form id="signup-form" novalidate>
+          <div class="fld">
+            <label for="su-name">Nama lengkap</label>
+            <input id="su-name" type="text" autocomplete="name" maxlength="60" placeholder="Nama kamu" aria-describedby="su-name-err" required>
+            <p class="err" id="su-name-err" aria-live="polite"></p>
+          </div>
+          <div class="fld">
+            <label for="su-email">Email</label>
+            <input id="su-email" type="email" autocomplete="email" inputmode="email" placeholder="nama@email.com" aria-describedby="su-email-err" required>
+            <p class="err" id="su-email-err" aria-live="polite"></p>
+          </div>
+          <div class="fld">
+            <label for="su-pass">Kata sandi</label>
+            <div class="pw">
+              <input id="su-pass" type="password" autocomplete="new-password" placeholder="Minimal 8 karakter" aria-describedby="meter-label su-pass-err" required>
+              <button class="pw-toggle" type="button" aria-pressed="false">Tampilkan</button>
+            </div>
+            <div class="meter" id="meter" data-lv="0" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+            <p class="muted small" id="meter-label">Minimal 8 karakter, kombinasi huruf dan angka.</p>
+            <p class="err" id="su-pass-err" aria-live="polite"></p>
+          </div>
+          <div class="fld">
+            <label for="su-pass2">Ulangi kata sandi</label>
+            <input id="su-pass2" type="password" autocomplete="new-password" placeholder="Ketik ulang kata sandi" aria-describedby="su-pass2-err" required>
+            <p class="err" id="su-pass2-err" aria-live="polite"></p>
+          </div>
+          <div class="fld">
+            <label class="check" for="su-agree"><input id="su-agree" type="checkbox" aria-describedby="su-agree-err"><span>Saya mengerti bahwa Jeda bukan alat diagnosis dan data saya disimpan di perangkat ini.</span></label>
+            <p class="err" id="su-agree-err" aria-live="polite"></p>
+          </div>
+          <button class="btn btn-primary btn-block" type="submit" id="submit"><span>Buat akun</span></button>
+        </form>
+        <p class="auth-foot">Sudah punya akun? <a href="signin.html">Masuk</a>.</p>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <p class="brand-s">Jeda</p>
+    <p class="muted">Website by: Steven Paulus Siahaan</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="config.js" defer></script>
+<script src="common.js" defer></script>
+<script src="auth.js" defer></script>
+</body>
+</html>
